@@ -1,1 +1,4 @@
 project_id = "wefibxjylxlwxgeqedit"
+
+[functions.ggcheckout]
+verify_jwt = false

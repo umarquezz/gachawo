@@ -1,0 +1,141 @@
+🚀 INSTRUÇÕES DE DEPLOY - FRONT-END ATUALIZADO
+================================================
+
+✅ BUILD CONCLUÍDO COM SUCESSO!
+Pasta: dist/
+Tamanho: ~520 KB (comprimido: ~150 KB)
+
+📦 ARQUIVOS GERADOS:
+- dist/index.html (página principal)
+- dist/assets/ (CSS e JavaScript)
+- dist/favicon.png, logo.png, etc.
+
+🌐 OPÇÕES DE DEPLOY:
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+OPÇÃO 1: VERCEL (Recomendado - Mais Fácil)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Instalar Vercel CLI (se não tiver):
+   npm i -g vercel
+
+2. Fazer login:
+   vercel login
+
+3. Deploy:
+   cd "/home/gabifran/Projeto Kauan/gacha-glimmer-lotto-21968-34820-25054-6-88685-main"
+   vercel --prod
+
+4. Configurar variáveis de ambiente no painel da Vercel:
+   - VITE_SUPABASE_URL = https://zcsyzddfmcvmxqqxqzsk.supabase.co
+   - VITE_SUPABASE_ANON_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inpjc3l6ZGRmbWN2bXhxcXhxenNrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM3ODA4NzMsImV4cCI6MjA0OTM1Njg3M30.j3w-8ztNUU2fYcLyZKLz8c1_ElEvJvNBPdZT4KTPN4A
+
+5. Fazer rebuild:
+   vercel --prod
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+OPÇÃO 2: NETLIFY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Instalar Netlify CLI:
+   npm i -g netlify-cli
+
+2. Fazer login:
+   netlify login
+
+3. Deploy:
+   cd "/home/gabifran/Projeto Kauan/gacha-glimmer-lotto-21968-34820-25054-6-88685-main"
+   netlify deploy --prod --dir=dist
+
+4. Configurar variáveis no painel Netlify (Settings > Environment):
+   - VITE_SUPABASE_URL
+   - VITE_SUPABASE_ANON_KEY
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+OPÇÃO 3: SERVIDOR PRÓPRIO (cPanel/FTP)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Compactar pasta dist:
+   cd "/home/gabifran/Projeto Kauan/gacha-glimmer-lotto-21968-34820-25054-6-88685-main"
+   zip -r frontend-build.zip dist/
+
+2. Upload via FTP/cPanel:
+   - Enviar conteúdo de dist/ para public_html/ (ou pasta do domínio)
+   - Extrair arquivos diretamente na raiz do site
+
+3. Criar arquivo .htaccess (para rotas funcionarem):
+   <IfModule mod_rewrite.c>
+     RewriteEngine On
+     RewriteBase /
+     RewriteRule ^index\.html$ - [L]
+     RewriteCond %{REQUEST_FILENAME} !-f
+     RewriteCond %{REQUEST_FILENAME} !-d
+     RewriteRule . /index.html [L]
+   </IfModule>
+
+⚠️ IMPORTANTE: Variáveis de ambiente em servidor próprio
+- As variáveis VITE_* são compiladas no build
+- Se mudar as variáveis, precisa fazer novo build:
+  npm run build
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+OPÇÃO 4: CLOUDFLARE PAGES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Criar projeto no Cloudflare Pages
+2. Conectar repositório GitHub
+3. Configurar build:
+   - Build command: npm run build
+   - Output directory: dist
+4. Adicionar variáveis de ambiente
+5. Deploy automático
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔍 TESTAR APÓS DEPLOY:
+
+1. Acessar: https://gachaworld.online (ou seu domínio)
+
+2. Ir para: https://gachaworld.online/historico-compras
+
+3. Fazer login com email: luizcharles007@gmail.com
+
+4. Verificar:
+   ✅ Status mostra "Entregue" (verde)
+   ✅ Valor correto da compra
+   ✅ Credenciais da conta (email e senha)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📝 CHECKLIST PÓS-DEPLOY:
+
+□ Site carrega sem erros
+□ Página /historico-compras funciona
+□ Login funciona
+□ Dados aparecem corretamente
+□ Credenciais são exibidas quando entregue
+□ Layout está correto (gradiente purple)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️ PROBLEMAS COMUNS:
+
+1. "Página em branco"
+   → Verificar se variáveis de ambiente estão configuradas
+   → Verificar console do navegador (F12)
+
+2. "Erro ao buscar dados"
+   → Verificar VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY
+   → Fazer rebuild: npm run build && vercel --prod
+
+3. "Rota 404"
+   → Adicionar arquivo _redirects (já incluído)
+   → Configurar rewrites no servidor
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ PRONTO PARA PRODUÇÃO!
+Build otimizado: ~150 KB comprimido
+Sem erros de compilação
+Todas as páginas criadas
+Cliente Supabase configurado

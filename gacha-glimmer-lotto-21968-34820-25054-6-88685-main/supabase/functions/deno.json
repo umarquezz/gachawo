@@ -1,0 +1,17 @@
+{
+  "tasks": {
+    "test": "deno test --allow-all",
+    "serve": "deno run --allow-all --watch index.ts"
+  },
+  "compilerOptions": {
+    "lib": ["deno.window"],
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "allowJs": false
+  },
+  "imports": {
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2",
+    "std/http": "https://deno.land/std@0.168.0/http/server.ts"
+  }
+}
