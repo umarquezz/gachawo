@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd gacha-glimmer-lotto-21968-34820-25054-6-88685-main && npm install && npm run build",
+  "outputDirectory": "gacha-glimmer-lotto-21968-34820-25054-6-88685-main/dist",
+  "installCommand": "cd gacha-glimmer-lotto-21968-34820-25054-6-88685-main && npm install",
+  "framework": "vite"
+}
